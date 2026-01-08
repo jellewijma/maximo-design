@@ -190,5 +190,67 @@ Example: `import { Header } from "@/components/layout"`
 
 ## Deployment
 
-Optimized for Vercel deployment (Next.js native platform).
-The project uses static export capabilities where possible and automatic optimizations for images and fonts.
+### Vercel Setup
+
+The project is deployed on Vercel with the following configuration:
+
+- **Production**: `main` branch → https://maximo-design-new.vercel.app
+- **Preview**: `staging` branch → Gets automatic preview URL
+- **Pull Requests**: Automatic preview deployments
+
+**Vercel CLI:**
+```bash
+vercel login          # Authenticate with Vercel
+vercel                # Deploy to preview
+vercel --prod         # Deploy to production
+```
+
+### Git Workflow
+
+The project uses a protected main branch workflow:
+
+1. **Main branch** (`main`): Production-ready code only
+   - Protected branch (requires PR to merge)
+   - Auto-deploys to production on Vercel
+
+2. **Staging branch** (`staging`): Development and testing
+   - All development work happens here
+   - Auto-deploys to preview environment on Vercel
+   - Merge to main via pull request when ready for production
+
+**Workflow:**
+```bash
+# 1. Make sure you're on staging
+git checkout staging
+
+# 2. Make your changes and commit
+git add .
+git commit -m "Your changes"
+git push
+
+# 3. Test on staging preview URL
+
+# 4. When ready for production, merge to main:
+git checkout main
+git merge staging
+git push
+
+# 5. Switch back to staging for next work
+git checkout staging
+```
+
+### Performance Monitoring
+
+- **Vercel Speed Insights**: Integrated via `@vercel/speed-insights` package
+- Tracks Core Web Vitals (LCP, FID, CLS, FCP, TTFB)
+- View metrics at: https://vercel.com/jelle-wijmas-projects/maximo-design-new
+
+### Image Optimization
+
+- Next.js automatic image optimization enabled
+- Formats: AVIF (primary), WebP (fallback)
+- Quality settings:
+  - Main catalog images: `quality={85}`
+  - Sidebar thumbnails: `quality={75}`
+- Responsive image sizes configured in `next.config.mjs`
+- 1-year cache TTL for optimized images
