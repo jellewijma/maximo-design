@@ -38,15 +38,17 @@ ALTER TABLE catalogs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE catalog_pages ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies for catalogs
--- Admins can do everything (you'll need to create an admin role or use auth.uid() checks)
-CREATE POLICY "Enable read access for all users" ON catalogs
+-- Public can read published catalogs
+CREATE POLICY "Public can view published catalogs" ON catalogs
   FOR SELECT USING (is_published = true);
 
-CREATE POLICY "Enable all access for authenticated users" ON catalogs
-  FOR ALL USING (auth.role() = 'authenticated');
+-- Authenticated users can manage all catalogs
+CREATE POLICY "Authenticated users can manage catalogs" ON catalogs
+  FOR ALL USING (auth.uid() IS NOT NULL);
 
 -- RLS Policies for catalog_pages
-CREATE POLICY "Enable read access for published catalog pages" ON catalog_pages
+-- Public can read pages from published catalogs
+CREATE POLICY "Public can view published catalog pages" ON catalog_pages
   FOR SELECT USING (
     EXISTS (
       SELECT 1 FROM catalogs
@@ -55,8 +57,9 @@ CREATE POLICY "Enable read access for published catalog pages" ON catalog_pages
     )
   );
 
-CREATE POLICY "Enable all access for authenticated users" ON catalog_pages
-  FOR ALL USING (auth.role() = 'authenticated');
+-- Authenticated users can manage all catalog pages
+CREATE POLICY "Authenticated users can manage catalog pages" ON catalog_pages
+  FOR ALL USING (auth.uid() IS NOT NULL);
 
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()

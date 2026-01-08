@@ -222,6 +222,12 @@ npm run lint
 - Make sure the bucket is set to public
 - Check storage policies in Supabase
 
+### "new row violates row-level security policy" error
+If you get this error when uploading images:
+1. Go to your Supabase SQL Editor
+2. Run the contents of `supabase/fix-rls-policies.sql`
+3. This fixes the authentication policies to properly allow authenticated users to upload
+
 ### "Invalid JWT" errors
 - Clear browser cookies and re-login
 - Check that environment variables are set correctly
