@@ -65,7 +65,7 @@ export function CatalogSidebar({
         </h2>
 
         {/* Page thumbnails - scrollable */}
-        <div className="max-h-[calc(100vh-12rem)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-foreground/20 scrollbar-track-transparent">
+        <div className="max-h-[calc(100vh-20rem)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-foreground/20 scrollbar-track-transparent">
           <ul className="space-y-3">
             {pagePairs.map((pair) => {
               const isActive =

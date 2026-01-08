@@ -54,7 +54,7 @@ export function CatalogPageClient({
     <div className="pt-16 tablet:pt-20 min-h-screen flex flex-col">
       {/* Main Catalog Layout - Two columns on desktop */}
       <section className="flex-1 container-padding py-8 tablet:py-12">
-        <div className="flex flex-col tablet:flex-row gap-6 tablet:gap-8 desktop:gap-12 h-full">
+        <div className="flex flex-col tablet:flex-row gap-6 tablet:gap-8 desktop:gap-12 max-w-full">
           {/* Left Sidebar - Page navigator (desktop only) */}
           <CatalogSidebar
             currentPage={currentPage}
@@ -63,7 +63,7 @@ export function CatalogPageClient({
           />
 
           {/* Catalog Viewer */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 max-w-full">
             <CatalogViewer
               currentPage={currentPage}
               totalPages={TOTAL_PAGES}
