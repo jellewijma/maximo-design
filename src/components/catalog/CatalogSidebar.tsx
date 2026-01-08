@@ -97,6 +97,7 @@ export function CatalogSidebar({
                             fill
                             className="object-cover"
                             sizes="150px"
+                            quality={75}
                           />
                         </div>
                         {/* Second page of the pair (if exists) */}
@@ -108,6 +109,7 @@ export function CatalogSidebar({
                               fill
                               className="object-cover"
                               sizes="150px"
+                              quality={75}
                             />
                           </div>
                         )}

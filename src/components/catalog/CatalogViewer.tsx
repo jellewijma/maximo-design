@@ -130,6 +130,7 @@ export function CatalogViewer({
                 ${isAnimating ? "opacity-80" : "opacity-100"}
               `}
               sizes="100vw"
+              quality={85}
               priority={currentPage <= 3}
             />
           </div>
@@ -149,6 +150,7 @@ export function CatalogViewer({
                     ${isAnimating ? "opacity-80" : "opacity-100"}
                   `}
                   sizes="50vw"
+                  quality={85}
                   priority={spread.left <= 3}
                 />
               </div>
@@ -171,6 +173,7 @@ export function CatalogViewer({
                     ${isAnimating ? "opacity-80" : "opacity-100"}
                   `}
                   sizes="50vw"
+                  quality={85}
                   priority={spread.right <= 3}
                 />
               </div>
