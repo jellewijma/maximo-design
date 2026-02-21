@@ -6,3 +6,4 @@
 
 export { CatalogViewer } from "./CatalogViewer";
 export { CatalogSidebar } from "./CatalogSidebar";
+export { CategoryInfoPanel } from "./CategoryInfoPanel";

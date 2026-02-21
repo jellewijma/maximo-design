@@ -3,6 +3,7 @@
 /**
  * Catalog Sidebar Component
  *
+<<<<<<< HEAD
  * A sidebar navigation component for the catalog page.
  * Shows thumbnail previews of catalog pages for quick visual browsing.
  *
@@ -11,11 +12,26 @@
  * - Visual indicator for current page
  * - Scrollable page list
  * - Clicking a thumbnail jumps to that page
+=======
+ * A vertical sidebar with minimal category markers for the catalog page.
+ * Features a vertical line with horizontal tick marks for each category.
+ *
+ * Features:
+ * - Vertical line with tick marks for each finish category
+ * - Category label displayed next to active tick
+ * - Clicking a category jumps to that section's first page
+ * - Minimal, modern design matching the new aesthetic
+>>>>>>> origin/laptop
  *
  * @example
  * ```tsx
  * <CatalogSidebar
+<<<<<<< HEAD
  *   currentPage={5}
+=======
+ *   activeFilter="gunmetal"
+ *   onFilterChange={(filter) => setActiveFilter(filter)}
+>>>>>>> origin/laptop
  *   onJumpToPage={(page) => setCurrentPage(page)}
  * />
  * ```
@@ -38,7 +54,11 @@ interface CatalogSidebarProps {
 }
 
 /**
+<<<<<<< HEAD
  * Catalog sidebar with page thumbnail previews
+=======
+ * Catalog sidebar with vertical category markers
+>>>>>>> origin/laptop
  */
 export function CatalogSidebar({
   currentPage,
@@ -47,6 +67,7 @@ export function CatalogSidebar({
 }: CatalogSidebarProps) {
   const t = useTranslations("catalog");
 
+<<<<<<< HEAD
   // Generate array of page pairs (1-2, 3-4, 5-6, etc.)
   const pagePairs: Array<{ start: number; end: number }> = [];
   for (let i = 1; i <= TOTAL_PAGES; i += 2) {
@@ -135,6 +156,68 @@ export function CatalogSidebar({
           <span className="font-semibold text-foreground">{currentPage}</span> /{" "}
           {TOTAL_PAGES}
         </p>
+=======
+  /**
+   * Handle category marker click
+   * Changes the active filter and jumps to the first page of that category
+   */
+  const handleCategoryClick = (filter: FinishType) => {
+    onFilterChange(filter);
+    const firstPage = getFirstPageForFinish(filter);
+    onJumpToPage(firstPage);
+  };
+
+  return (
+    <aside className={`relative ${className}`}>
+      <div className="sticky top-24 flex flex-col h-[60vh]">
+        {/* Vertical line with category markers */}
+        <div className="relative flex flex-col justify-between h-full">
+          {/* The vertical line */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-px bg-foreground/20"
+            aria-hidden="true"
+          />
+
+          {/* Category markers */}
+          {catalogCategories.map((category) => {
+            const isActive = activeFilter === category.id;
+
+            return (
+              <button
+                key={category.id}
+                onClick={() => handleCategoryClick(category.id)}
+                className={`
+                  relative flex items-center
+                  transition-all duration-200
+                  group
+                  ${isActive ? "opacity-100" : "opacity-60 hover:opacity-100"}
+                `}
+                aria-label={`${t(`filters.${category.labelKey}`)} - Pages ${category.startPage}-${category.endPage}`}
+              >
+                {/* Horizontal tick mark */}
+                <div
+                  className={`
+                    w-4 h-px
+                    transition-all duration-200
+                    ${isActive ? "bg-foreground" : "bg-foreground/40 group-hover:bg-foreground/70"}
+                  `}
+                />
+
+                {/* Category label */}
+                <span
+                  className={`
+                    ml-3 text-xs font-medium whitespace-nowrap
+                    transition-all duration-200
+                    ${isActive ? "text-foreground" : "text-foreground/50 group-hover:text-foreground/80"}
+                  `}
+                >
+                  {t(`filters.${category.labelKey}`)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+>>>>>>> origin/laptop
       </div>
     </aside>
   );

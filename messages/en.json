@@ -6,12 +6,13 @@
   "nav": {
     "home": "Home",
     "catalog": "Catalog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "viewCatalog": "View Catalog"
   },
   "home": {
     "brandName": "Maximo Design",
     "tagline": "Quality taps",
-    "description": "Lorem ipsum dolor sit amet consectetur. Gravida consequat hendrerit dui diam eget. Adipiscing eget tempus a pretium condimentum donec odio mauris. Tellus mauris nunc adipiscing tellus turpis at ullamcorper turpis.",
+    "description": "Lorem ipsum dolor sit amet consectetur. Gravida consequat hendrerit dui diam eget. Adipiscing eget tempus a pretium condimentum donec odio mauris. Tellus mauris nunc adipiscing tellus turpis at ullamcorper turpis. Diam pulvinar tempor consectetur lectus.",
     "cta": "View catalog"
   },
   "catalog": {
@@ -26,7 +27,8 @@
       "gold": "Gold",
       "bronze": "Bronze",
       "chrome": "Chrome",
-      "matte_black": "Matte Black"
+      "matte_black": "Matte Black",
+      "cloud": "Cloud"
     },
     "page": "Page",
     "of": "of",

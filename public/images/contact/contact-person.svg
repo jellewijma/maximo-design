@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <!-- Background -->
+  <rect width="800" height="1000" fill="#1a1a1a"/>
+
+  <!-- Person silhouette circle (head) -->
+  <circle cx="400" cy="350" r="120" fill="#333"/>
+
+  <!-- Person silhouette body -->
+  <ellipse cx="400" cy="700" rx="200" ry="250" fill="#333"/>
+
+  <!-- Subtle gradient overlay for depth -->
+  <defs>
+    <linearGradient id="overlay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#121212;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#overlay)"/>
+
+  <!-- Placeholder text -->
+  <text x="400" y="900" font-family="sans-serif" font-size="24" fill="#666" text-anchor="middle">
+    Contact Photo Placeholder
+  </text>
+</svg>

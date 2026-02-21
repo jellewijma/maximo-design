@@ -3,15 +3,15 @@
 /**
  * Header Component
  *
- * Main navigation header with logo and navigation links.
- * Includes language switcher for Dutch/English.
+ * Main navigation header with logo and CTA buttons.
+ * Based on the new design with minimal navigation.
  *
  * Features:
  * - Logo image (logo.svg) on left
- * - Navigation links (Home, Catalogus, Contact) in center/right
- * - Language switcher (NL/EN) on far right
+ * - "Catalogus" text in center (on catalog page)
+ * - Two CTA buttons on right: "CONTACT" (outline) and "BEKIJK CATALOGUS" (primary)
  * - Responsive design with mobile hamburger menu
- * - Sticky positioning with backdrop blur
+ * - Transparent/minimal background
  *
  * @example
  * ```tsx
@@ -21,8 +21,10 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
+<<<<<<< HEAD
 // import { LanguageSwitcher } from "./LanguageSwitcher";
 
 /**
@@ -43,6 +45,9 @@ const navLinks: NavLink[] = [
   { labelKey: "contact", href: "/contact" },
   { labelKey: "catalog", href: "/catalogus" },
 ];
+=======
+import { Button } from "@/components/ui";
+>>>>>>> origin/laptop
 
 /**
  * Props for the Header component
@@ -53,10 +58,11 @@ interface HeaderProps {
 }
 
 /**
- * Main header component with navigation
+ * Main header component with navigation buttons
  */
 export function Header({ className = "" }: HeaderProps) {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -67,12 +73,19 @@ export function Header({ className = "" }: HeaderProps) {
     setIsMobileMenuOpen(false);
   };
 
+  // Check if we're on the catalog page to show centered title
+  const isCatalogPage = pathname?.includes("/catalogus");
+
   return (
     <header
       className={`
         fixed top-0 left-0 right-0 z-50
+<<<<<<< HEAD
         bg-background/95 backdrop-blur-sm
         border-b border-[#EFEFEF]
+=======
+        bg-transparent
+>>>>>>> origin/laptop
         ${className}
       `}
     >
@@ -94,6 +107,7 @@ export function Header({ className = "" }: HeaderProps) {
             />
           </Link>
 
+<<<<<<< HEAD
           {/* Desktop Navigation */}
           <nav className="hidden tablet:flex items-center gap-4 ml-auto">
             {navLinks.map((link) => {
@@ -123,6 +137,36 @@ export function Header({ className = "" }: HeaderProps) {
           {/* Right side: Mobile menu */}
           <div className="flex items-center gap-4 tablet:ml-8">
             {/* <LanguageSwitcher /> */}
+=======
+          {/* Centered page title (visible on catalog page) */}
+          {isCatalogPage && (
+            <span className="hidden tablet:block text-sm font-medium uppercase tracking-wider text-foreground/80">
+              {t("catalog")}
+            </span>
+          )}
+
+          {/* Right side: CTA Buttons + Mobile menu */}
+          <div className="flex items-center gap-3 tablet:gap-4">
+            {/* Desktop navigation buttons */}
+            <nav className="hidden tablet:flex items-center gap-3">
+              <Button
+                href="/contact"
+                variant="secondary"
+                size="sm"
+                className="uppercase tracking-wider text-xs"
+              >
+                {t("contact")}
+              </Button>
+              <Button
+                href="/catalogus"
+                variant="primary"
+                size="sm"
+                className="uppercase tracking-wider text-xs"
+              >
+                {t("viewCatalog")}
+              </Button>
+            </nav>
+>>>>>>> origin/laptop
 
             {/* Mobile menu button */}
             <button
@@ -175,6 +219,7 @@ export function Header({ className = "" }: HeaderProps) {
             animate-slideUp
           "
         >
+<<<<<<< HEAD
           <div className="container-padding py-4">
             <ul className="space-y-3">
               {navLinks.map((link) => {
@@ -203,6 +248,36 @@ export function Header({ className = "" }: HeaderProps) {
                 );
               })}
             </ul>
+=======
+          <div className="container-padding py-4 space-y-3">
+            <Link
+              href="/contact"
+              className="
+                block py-3 px-4
+                text-lg font-medium text-center
+                text-foreground/80 hover:text-foreground
+                hover:bg-foreground/5 rounded
+                border border-foreground/30
+                transition-colors duration-200
+              "
+              onClick={closeMobileMenu}
+            >
+              {t("contact")}
+            </Link>
+            <Link
+              href="/catalogus"
+              className="
+                block py-3 px-4
+                text-lg font-medium text-center
+                text-foreground bg-primary
+                hover:bg-primary/90 rounded
+                transition-colors duration-200
+              "
+              onClick={closeMobileMenu}
+            >
+              {t("viewCatalog")}
+            </Link>
+>>>>>>> origin/laptop
           </div>
         </nav>
       )}

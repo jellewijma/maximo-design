@@ -18,33 +18,37 @@ The website is a product catalog and brand showcase for Maximo Design, featuring
 ## 2. Page Structure
 
 ### 2.1 Homepage
-- **Hero Section:** Full-width layout with product imagery on the right side (approx. 50% width)
-- **Brand Title:** "Maximo Design" prominently displayed
-- **Tagline:** "Kranen met kwaliteit" as a subtitle
-- **Description:** Introductory text describing the brand/products
-- **Catalog Preview:** Grid of product category cards with:
-  - Category image
-  - Category name (e.g., "Brons kranen" - Bronze faucets)
-  - Page reference (e.g., "pg 05 - 11")
+- **Layout:** Two-column split (text content left, hero image right)
+- **Hero Image:** Gold faucet on dark textured background (right side, approx. 50% width)
+- **Content Structure (Left Side):**
+  - **Description:** Lorem ipsum text at top-left
+  - **Tagline:** "Kranen met kwaliteit" positioned lower-left
+  - **Brand Title:** "Maximo Design" prominently displayed at BOTTOM-left
+- **Carousel Indicators:** Dot navigation at bottom-right (5-6 dots visible)
 
 ### 2.2 Catalog Page
-- **Header:** "Catalogus" title
-- **Left Sidebar:** Filter system with:
-  - Product finish categories (Gun Metal, Goud/Gold)
-  - Grid of product thumbnails organized by finish
-  - Product numbers displayed in cells
-- **Main Content Area:** Two-column product viewer
-  - Large product images (586px and 595px width each)
-  - Page navigation at bottom (e.g., "40 / 92")
-  - Pagination components
+- **Header:** "Catalogus" title centered at top
+- **Left Sidebar:** Vertical filter navigation with:
+  - Vertical line markers indicating categories
+  - "Gun Metal" section with product thumbnail grid
+  - "Cloud" section with product thumbnail grid
+  - Each thumbnail shows miniature product image
+- **Main Content Area:** Large centered lifestyle product image
+- **Right Panel:**
+  - Active category title (e.g., "Gun Metal")
+  - Product description text below title
+- **Bottom Navigation:**
+  - Centered pagination with left/right arrows
+  - Page counter in format "40 / 92"
 
 ### 2.3 Contact Page
-- **Title:** "Contact"
-- **Content:** Contact information and call-to-action text
-- **Message:** "Wilt u een bestelling plaatsen of heeft u een vraag? Wij staan voor u klaar."
-- **Layout Options:**
-  - Centered text layout
-  - Two-column layout with image on right side
+- **Layout:** Two-column split (text left, photo right)
+- **Left Column:**
+  - **Title:** "Contact"
+  - **Message:** "Wilt u een **bestelling** plaatsen of heeft u een **vraag**? Wij staan voor u klaar."
+  - **Email:** "E-mail: sanisupply@info.nl"
+- **Right Column:**
+  - Large photo of person in orange shirt looking upward (professional portrait)
 
 ---
 
@@ -77,19 +81,28 @@ The website is a product catalog and brand showcase for Maximo Design, featuring
 
 ## 4. Typography
 
-### 4.1 Headings
-| Element | Size (estimated) | Usage |
-|---------|-----------------|-------|
-| H1 / Brand Title | Large (110px height container) | "Maximo Design" |
-| H2 / Section Title | Large (110px height container) | "Catalogus", "Contact" |
-| Tagline | Medium (~52px height) | "Kranen met kwaliteit" |
+### 4.1 Font Families
+| Element | Font Family | Weight |
+|---------|-------------|--------|
+| Brand Title "Maximo Design" | Abril Display (licensed) | Regular |
+| All Other Text | Montserrat | Regular/Bold |
 
-### 4.2 Body Text
-| Element | Size (estimated) | Usage |
-|---------|-----------------|-------|
-| Description | Standard | Intro paragraphs |
-| Labels | Small (~23px height) | Category labels, page numbers |
-| Navigation | Standard | Menu items |
+### 4.2 Headings
+| Element | Size | Usage |
+|---------|------|-------|
+| H1 / Brand Title | Very Large | "Maximo Design" at bottom-left of homepage |
+| H2 / Page Title | Large | "Catalogus", "Contact" |
+| H3 / Section Title | Medium | "Gun Metal" category title |
+| Tagline | Small | "Kranen met kwaliteit" |
+
+### 4.3 Body Text
+| Element | Size | Usage |
+|---------|------|-------|
+| Description | Standard | Lorem ipsum intro text |
+| Contact Text | Standard | Contact page message with bold keywords |
+| Category Description | Small | Product finish descriptions |
+| Buttons | Standard/Small Caps | "CONTACT", "NAAR CATALOGUS" |
+| Pagination | Small | "40 / 92" page counter |
 
 ---
 
@@ -98,26 +111,29 @@ The website is a product catalog and brand showcase for Maximo Design, featuring
 ### 5.1 Product Finishes
 These are key product categories that may influence UI accent colors:
 - **Gun Metal** - Dark metallic finish
-- **Goud (Gold)** - Golden/brass finish
-- **Brons (Bronze)** - Bronze finish
+- **Cloud** - Light/silver finish
+- **Goud (Gold)** - Golden/brass finish (visible in hero image)
 
-### 5.2 UI Colors (Inferred)
-| Usage | Color Notes |
-|-------|-------------|
-| Background | Light/White |
-| Lines/Dividers | Thin horizontal and vertical lines throughout |
-| Text | Dark (likely black or dark gray) |
+### 5.2 UI Colors
+| Usage | Color | Hex Code |
+|-------|-------|----------|
+| Background | Dark charcoal/black | #121111 |
+| Text | Light gray/white | #EFEFEF |
+| Primary Button | Electric blue/purple | #2E00E5 |
+| Button Outline | Light gray border | #EFEFEF |
+| Accent Lines | Thin dividers | Semi-transparent white |
 
 ---
 
 ## 6. Components
 
 ### 6.1 Header/Navigation
-- **Logo:** Positioned top-left (30px from edge, y=32)
-- **Navigation Items:** Two button groups in top-right
-  - Primary nav button: 310px x 49px
-  - Secondary nav button: 180px x 49px
-- **Divider Line:** Full-width horizontal line at y=119
+- **Logo:** "M" monogram positioned top-left corner
+- **Navigation Items:** Two buttons in top-right corner
+  - **"CONTACT" button:** Outline style (transparent with border)
+  - **"NAAR CATALOGUS" button:** Filled purple (#2E00E5) button
+- **Layout:** No traditional navigation links, only logo left and two action buttons right
+- **Background:** Dark/black background throughout
 
 ### 6.2 Product Card (Catalog Preview)
 - **Dimensions:** 930px x 480px (desktop), 768px x 480px (tablet)
@@ -127,28 +143,33 @@ These are key product categories that may influence UI accent colors:
   - Page reference (e.g., "pg 05 - 11")
 
 ### 6.3 Catalog Filter Sidebar
-- **Width:** ~160px
+- **Width:** ~80-100px (narrow vertical strip)
 - **Structure:**
-  - Vertical divider lines
-  - Color/finish section headers (Gun Metal, Goud)
-  - Horizontal section dividers
-  - Product number grid (2 columns of thumbnails)
-  - Highlight indicator for current selection
+  - Vertical line markers indicating category sections
+  - Category labels: "Gun Metal", "Cloud"
+  - Product thumbnail grid (1-2 columns)
+  - Miniature product images showing faucet designs
+  - Visual hierarchy through spacing and vertical lines
 
 ### 6.4 Product Viewer
-- **Layout:** Two large image panels side by side
-- **Left panel:** 586px width
-- **Right panel:** 595px width
-- **Height:** 840px
-- **Footer:** Pagination controls and page indicator
+- **Layout:** Large centered lifestyle image with right-side info panel
+- **Main Image:** Full-width lifestyle product photography showing faucet in styled setting (dark surfaces, plants, accessories)
+- **Right Info Panel:**
+  - Category title (e.g., "Gun Metal")
+  - Description text
+  - Positioned over/beside main image
+- **Bottom Controls:** Centered pagination with arrows and page counter
 
 ### 6.5 Pagination Component
-- **Page indicator:** "40 / 92" format
-- **Navigation controls:** ~258px x 72px component buttons
+- **Layout:** Horizontal centered bar at bottom
+- **Left Arrow:** Previous page navigation
+- **Page Indicator:** "40 / 92" format showing current/total pages
+- **Right Arrow:** Next page navigation
+- **Style:** Minimalist with subtle borders and dark background
 
 ### 6.6 Footer
-- **Divider:** Full-width horizontal line
-- **Position:** y=1080 (at bottom of viewport)
+- **Note:** No footer present in design
+- **All pages:** Content extends to bottom of viewport without footer section
 
 ---
 
