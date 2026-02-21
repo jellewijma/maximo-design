@@ -24,30 +24,7 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
-<<<<<<< HEAD
-// import { LanguageSwitcher } from "./LanguageSwitcher";
-
-/**
- * Navigation link configuration
- */
-interface NavLink {
-  /** Translation key for the link label */
-  labelKey: "home" | "catalog" | "contact";
-  /** URL path */
-  href: "/" | "/catalogus" | "/contact";
-}
-
-/**
- * Navigation links configuration
- */
-const navLinks: NavLink[] = [
-  // { labelKey: "home", href: "/" },
-  { labelKey: "contact", href: "/contact" },
-  { labelKey: "catalog", href: "/catalogus" },
-];
-=======
 import { Button } from "@/components/ui";
->>>>>>> origin/laptop
 
 /**
  * Props for the Header component
@@ -80,12 +57,7 @@ export function Header({ className = "" }: HeaderProps) {
     <header
       className={`
         fixed top-0 left-0 right-0 z-50
-<<<<<<< HEAD
-        bg-background/95 backdrop-blur-sm
-        border-b border-[#EFEFEF]
-=======
         bg-transparent
->>>>>>> origin/laptop
         ${className}
       `}
     >
@@ -107,37 +79,6 @@ export function Header({ className = "" }: HeaderProps) {
             />
           </Link>
 
-<<<<<<< HEAD
-          {/* Desktop Navigation */}
-          <nav className="hidden tablet:flex items-center gap-4 ml-auto">
-            {navLinks.map((link) => {
-              const isCatalog = link.labelKey === "catalog";
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`
-                    px-6 py-2
-                    text-sm font-medium uppercase tracking-wider
-                    border border-[#EFEFEF] rounded-full
-                    transition-all duration-200
-                    ${
-                      isCatalog
-                        ? "bg-[#2E00E5] text-foreground hover:bg-[#2E00E5]/90"
-                        : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
-                    }
-                  `}
-                >
-                  {t(link.labelKey)}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right side: Mobile menu */}
-          <div className="flex items-center gap-4 tablet:ml-8">
-            {/* <LanguageSwitcher /> */}
-=======
           {/* Centered page title (visible on catalog page) */}
           {isCatalogPage && (
             <span className="hidden tablet:block text-sm font-medium uppercase tracking-wider text-foreground/80">
@@ -166,7 +107,6 @@ export function Header({ className = "" }: HeaderProps) {
                 {t("viewCatalog")}
               </Button>
             </nav>
->>>>>>> origin/laptop
 
             {/* Mobile menu button */}
             <button
@@ -219,36 +159,6 @@ export function Header({ className = "" }: HeaderProps) {
             animate-slideUp
           "
         >
-<<<<<<< HEAD
-          <div className="container-padding py-4">
-            <ul className="space-y-3">
-              {navLinks.map((link) => {
-                const isCatalog = link.labelKey === "catalog";
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`
-                        block py-3 px-6
-                        text-center
-                        text-lg font-medium uppercase tracking-wider
-                        border border-[#EFEFEF] rounded-full
-                        transition-all duration-200
-                        ${
-                          isCatalog
-                            ? "bg-[#2E00E5] text-foreground hover:bg-[#2E00E5]/90"
-                            : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
-                        }
-                      `}
-                      onClick={closeMobileMenu}
-                    >
-                      {t(link.labelKey)}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-=======
           <div className="container-padding py-4 space-y-3">
             <Link
               href="/contact"
@@ -277,7 +187,6 @@ export function Header({ className = "" }: HeaderProps) {
             >
               {t("viewCatalog")}
             </Link>
->>>>>>> origin/laptop
           </div>
         </nav>
       )}

@@ -3,13 +3,13 @@
 /**
  * Catalog Viewer Component
  *
- * A catalog viewer showing pages in a book spread format.
+ * A two-page book spread catalog viewer for desktop, single page on mobile.
  * Features:
- * - Two-page spread on desktop (like an open book)
+ * - Two-page spread on desktop (image left, info right)
  * - Single page on mobile/tablet
  * - Centered pagination with < > arrows and "40/92" format
  * - Subtle page turn animation
- * - Keyboard navigation support (arrow keys)
+ * - Keyboard navigation support
  *
  * @example
  * ```tsx
@@ -17,17 +17,15 @@
  *   currentPage={1}
  *   totalPages={117}
  *   onPageChange={(page) => setCurrentPage(page)}
+ *   categoryName="Gun Metal"
+ *   categoryDescription="Gun metal offers a bold aesthetic..."
  * />
  * ```
  */
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  getPageImagePath,
-  getPageSpread,
-  TOTAL_PAGES,
-} from "@/lib/catalog-data";
+import { getPageImagePath, TOTAL_PAGES } from "@/lib/catalog-data";
 
 /**
  * Props for the CatalogViewer component
@@ -39,17 +37,23 @@ interface CatalogViewerProps {
   totalPages?: number;
   /** Callback when page changes */
   onPageChange: (page: number) => void;
+  /** Category name for the right page */
+  categoryName?: string;
+  /** Category description for the right page */
+  categoryDescription?: string;
   /** Additional CSS classes */
   className?: string;
 }
 
 /**
- * Catalog viewer with full-page display and centered pagination
+ * Catalog viewer with two-page spread on desktop and centered pagination
  */
 export function CatalogViewer({
   currentPage,
   totalPages = TOTAL_PAGES,
   onPageChange,
+  categoryName,
+  categoryDescription,
   className = "",
 }: CatalogViewerProps) {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -104,15 +108,12 @@ export function CatalogViewer({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [goToPrevious, goToNext]);
 
-  // Get the page spread (left and right pages)
-  const spread = getPageSpread(currentPage);
-
   return (
-    <div className={`flex flex-col w-full ${className}`}>
-      {/* Catalog page display */}
+    <div className={`flex flex-col ${className}`}>
+      {/* Two-page book spread on desktop, single page on mobile */}
       <div
         className={`
-          relative w-full max-w-full
+          relative
           bg-foreground/5 rounded-lg overflow-hidden
           border border-foreground/10
           transition-transform duration-300 ease-out
@@ -120,71 +121,49 @@ export function CatalogViewer({
           ${isAnimating && animationDirection === "left" ? "translate-x-[0.5%]" : ""}
         `}
       >
-        {/* Two-page spread on desktop, single page on mobile */}
-        <div className="relative">
-          {/* Mobile/Tablet: Single page view */}
-          <div className="desktop:hidden relative aspect-3/4 max-h-[calc(100vh-16rem)]">
+        {/* Book spread container */}
+        <div className="flex flex-col desktop:flex-row">
+          {/* Left page - Catalog image */}
+          <div className="relative aspect-[4/3] tablet:aspect-[16/10] desktop:aspect-[4/3] desktop:flex-1">
             <Image
               src={getPageImagePath(currentPage)}
               alt={`Catalog page ${currentPage}`}
               fill
               className={`
-                object-contain
+                object-cover
                 transition-opacity duration-300
                 ${isAnimating ? "opacity-80" : "opacity-100"}
               `}
-              sizes="100vw"
-              quality={85}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 50vw"
               priority={currentPage <= 3}
             />
           </div>
 
-          {/* Desktop: Two-page spread */}
-          <div className="hidden desktop:flex">
-            {/* Left page */}
-            {spread.left && (
-              <div className="relative flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] border-r border-foreground/10">
-                <Image
-                  src={getPageImagePath(spread.left)}
-                  alt={`Catalog page ${spread.left}`}
-                  fill
-                  className={`
-                    object-contain
-                    transition-opacity duration-300
-                    ${isAnimating ? "opacity-80" : "opacity-100"}
-                  `}
-                  sizes="50vw"
-                  quality={85}
-                  priority={spread.left <= 3}
-                />
-              </div>
+          {/* Right page - Category info (desktop only) */}
+          <div className="hidden desktop:flex desktop:flex-1 bg-background aspect-[4/3] flex-col justify-center px-12 py-8">
+            {categoryName && (
+              <h2
+                className="
+                  text-3xl desktop:text-4xl
+                  font-semibold mb-6
+                  text-foreground
+                  transition-all duration-300
+                "
+              >
+                {categoryName}
+              </h2>
             )}
-            {/* Empty left page for page 1 */}
-            {!spread.left && (
-              <div className="flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] bg-background/50" />
-            )}
-
-            {/* Right page */}
-            {spread.right && (
-              <div className="relative flex-1 aspect-3/4 max-h-[calc(100vh-16rem)]">
-                <Image
-                  src={getPageImagePath(spread.right)}
-                  alt={`Catalog page ${spread.right}`}
-                  fill
-                  className={`
-                    object-contain
-                    transition-opacity duration-300
-                    ${isAnimating ? "opacity-80" : "opacity-100"}
-                  `}
-                  sizes="50vw"
-                  quality={85}
-                  priority={spread.right <= 3}
-                />
-              </div>
-            )}
-            {/* Empty right page for last page if odd */}
-            {!spread.right && (
-              <div className="flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] bg-background/50" />
+            {categoryDescription && (
+              <p
+                className="
+                  text-sm text-foreground/60
+                  leading-relaxed
+                  max-w-sm
+                  transition-all duration-300
+                "
+              >
+                {categoryDescription}
+              </p>
             )}
           </div>
         </div>

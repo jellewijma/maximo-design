@@ -47,24 +47,11 @@ export function Hero({ className = "" }: HeroProps) {
         <div
           className="
             flex-1 flex flex-col justify-between
-<<<<<<< HEAD
-            container-padding py-12 tablet:py-20
-=======
             container-padding py-12 tablet:py-16 desktop:py-20
->>>>>>> origin/laptop
             order-2 tablet:order-1
             tablet:border-r border-[#EFEFEF]
           "
         >
-<<<<<<< HEAD
-          {/* Description - At Top */}
-          <div className="max-w-xl">
-            <p
-              className="
-                text-base tablet:text-lg text-foreground/70
-                max-w-lg leading-relaxed
-                animate-slideUp
-=======
           {/* Top section: Description */}
           <div
             className="max-w-lg animate-slideUp"
@@ -74,35 +61,12 @@ export function Hero({ className = "" }: HeroProps) {
               className="
                 text-sm tablet:text-base text-foreground/70
                 leading-relaxed
->>>>>>> origin/laptop
               "
             >
               {t("description")}
             </p>
           </div>
 
-<<<<<<< HEAD
-          {/* Tagline and Brand Title - At Bottom */}
-          <div className="mt-auto space-y-2">
-            {/* Tagline */}
-            <p
-              className="
-                text-xl tablet:text-2xl desktop:text-3xl font-light
-                text-foreground/90
-                animate-slideUp
-              "
-              style={{ animationDelay: "100ms" }}
-            >
-              {t("tagline")}
-            </p>
-
-            {/* Brand Title */}
-            <h1
-              className="
-                font-display font-semibold text-5xl tablet:text-6xl desktop:text-7xl wide:text-8xl
-                tracking-wide
-                tablet:whitespace-nowrap
-=======
           {/* Bottom section: Tagline and Brand Title */}
           <div className="mt-auto">
             {/* Tagline */}
@@ -110,13 +74,10 @@ export function Hero({ className = "" }: HeroProps) {
               className="
                 text-base tablet:text-lg desktop:text-xl font-light
                 mb-2 tablet:mb-3 text-foreground/80
->>>>>>> origin/laptop
                 animate-slideUp
               "
               style={{ animationDelay: "200ms" }}
             >
-<<<<<<< HEAD
-=======
               {t("tagline")}
             </p>
 
@@ -129,7 +90,6 @@ export function Hero({ className = "" }: HeroProps) {
               "
               style={{ animationDelay: "300ms" }}
             >
->>>>>>> origin/laptop
               {t("brandName")}
             </h1>
           </div>
@@ -156,13 +116,8 @@ export function Hero({ className = "" }: HeroProps) {
           <div
             className="
               absolute inset-0
-<<<<<<< HEAD
-              bg-linear-to-b from-transparent via-transparent to-background/80
-              tablet:bg-gradient-to-r tablet:from-background/40 tablet:via-transparent tablet:to-transparent
-=======
               bg-gradient-to-b from-transparent via-transparent to-background/60
               tablet:bg-gradient-to-r tablet:from-background/20 tablet:via-transparent tablet:to-transparent
->>>>>>> origin/laptop
             "
             aria-hidden="true"
           />
