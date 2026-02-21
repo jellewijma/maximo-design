@@ -17,7 +17,7 @@ import type { Locale } from "@/lib/i18n/config";
  * Props for the homepage
  */
 interface HomePageProps {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 /**

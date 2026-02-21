@@ -115,7 +115,7 @@ export function Hero({ className = "" }: HeroProps) {
           <div
             className="
               absolute inset-0
-              bg-gradient-to-b from-transparent via-transparent to-background/80
+              bg-linear-to-b from-transparent via-transparent to-background/80
               tablet:bg-gradient-to-r tablet:from-background/40 tablet:via-transparent tablet:to-transparent
             "
             aria-hidden="true"

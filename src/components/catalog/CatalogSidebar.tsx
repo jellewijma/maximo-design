@@ -87,7 +87,7 @@ export function CatalogSidebar({
                     aria-current={isActive ? "page" : undefined}
                   >
                     {/* Thumbnail grid - show both pages side by side */}
-                    <div className="relative aspect-[2/1] bg-foreground/5">
+                    <div className="relative aspect-2/1 bg-foreground/5">
                       <div className="absolute inset-0 flex">
                         {/* First page of the pair */}
                         <div className="relative flex-1">
@@ -116,7 +116,7 @@ export function CatalogSidebar({
                       </div>
 
                       {/* Page numbers overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-2">
+                      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-background/90 to-transparent p-2">
                         <span className="text-xs font-medium text-foreground">
                           {pair.start}-{pair.end}
                         </span>
@@ -131,7 +131,9 @@ export function CatalogSidebar({
 
         {/* Current page indicator */}
         <p className="mt-4 text-sm text-foreground/70">
-          {t("currentPage")}: <span className="font-semibold text-foreground">{currentPage}</span> / {TOTAL_PAGES}
+          {t("currentPage")}:{" "}
+          <span className="font-semibold text-foreground">{currentPage}</span> /{" "}
+          {TOTAL_PAGES}
         </p>
       </div>
     </aside>

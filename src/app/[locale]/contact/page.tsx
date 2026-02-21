@@ -24,7 +24,7 @@ import type { Locale } from "@/lib/i18n/config";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
@@ -42,7 +42,7 @@ export async function generateMetadata({
  * Props for the contact page
  */
 interface ContactPageProps {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 /**
@@ -108,7 +108,10 @@ export default async function ContactPage({ params }: ContactPageProps) {
             </div>
 
             {/* CTA Button */}
-            <div className="animate-slideUp" style={{ animationDelay: "300ms" }}>
+            <div
+              className="animate-slideUp"
+              style={{ animationDelay: "300ms" }}
+            >
               <a
                 href={`mailto:${email}`}
                 className="
@@ -162,7 +165,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
           <div
             className="
               absolute inset-0
-              bg-gradient-to-b from-transparent via-transparent to-background/80
+              bg-linear-to-b from-transparent via-transparent to-background/80
               tablet:bg-gradient-to-r tablet:from-background/40 tablet:via-transparent tablet:to-transparent
             "
             aria-hidden="true"

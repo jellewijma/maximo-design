@@ -1,12 +1,12 @@
 # Maximo Design
 
-B2B bathroom faucets catalog website built with Next.js 14.
+B2B bathroom faucets catalog website built with Next.js 16.
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS v4
 - **Internationalization:** next-intl (Dutch & English)
 - **Fonts:** Montserrat (Google Fonts) + Abril Display (self-hosted)
 
@@ -14,7 +14,7 @@ B2B bathroom faucets catalog website built with Next.js 14.
 
 ### Prerequisites
 
-- Node.js 18.17.0 or higher
+- Node.js 24.0.0 or higher
 - npm or yarn
 
 ### Installation

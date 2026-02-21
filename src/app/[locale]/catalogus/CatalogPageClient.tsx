@@ -31,9 +31,7 @@ interface CatalogPageClientProps {
 /**
  * Catalog page client component with state management
  */
-export function CatalogPageClient({
-  initialPage = 1,
-}: CatalogPageClientProps) {
+export function CatalogPageClient({ initialPage = 1 }: CatalogPageClientProps) {
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   /**

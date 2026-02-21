@@ -55,11 +55,9 @@ interface BaseButtonProps {
  * Props when Button renders as a button element
  */
 interface ButtonElementProps
-  extends BaseButtonProps,
-    Omit<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      keyof BaseButtonProps
-    > {
+  extends
+    BaseButtonProps,
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
   /** When provided, renders as a link */
   href?: never;
 }

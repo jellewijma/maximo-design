@@ -8,30 +8,30 @@
  * - Base styles
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* =============================================================================
+@layer utilities {
+  /* =============================================================================
    Font Faces
    ============================================================================= */
 
-/**
+  /**
  * Abril Display - Brand Font
  * Used exclusively for the "Maximo Design" brand name
  * Self-hosted from /fonts/abril-display.woff2
  */
-@font-face {
-  font-family: "Abril Display";
-  src: url("/fonts/AbrilDisplay-SemiBold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Abril Display";
+    src: url("/fonts/AbrilDisplay-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
 
-/* =============================================================================
+  /* =============================================================================
    CSS Custom Properties (Design Tokens)
    ============================================================================= */
+}
 
 @layer base {
   :root {

@@ -32,9 +32,10 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const validLocale = locale as Locale;
 
   const titles: Record<Locale, string> = {
     nl: "Maximo Design - Kranen met kwaliteit",
@@ -48,14 +49,14 @@ export async function generateMetadata({
 
   return {
     title: {
-      default: titles[locale],
+      default: titles[validLocale],
       template: "%s | Maximo Design",
     },
-    description: descriptions[locale],
+    description: descriptions[validLocale],
     openGraph: {
-      title: titles[locale],
-      description: descriptions[locale],
-      locale: locale === "nl" ? "nl_NL" : "en_US",
+      title: titles[validLocale],
+      description: descriptions[validLocale],
+      locale: validLocale === "nl" ? "nl_NL" : "en_US",
       type: "website",
     },
   };
@@ -66,7 +67,7 @@ export async function generateMetadata({
  */
 interface LocaleLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 /**
@@ -77,9 +78,10 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale } = await params;
+  const validLocale = locale as Locale;
 
   // Validate locale
-  if (!locales.includes(locale)) {
+  if (!locales.includes(validLocale)) {
     notFound();
   }
 

@@ -73,7 +73,9 @@ export const CATALOG_IMAGE_BASE_PATH = "/images/catalog";
  */
 export function getPageFilename(pageNumber: number): string {
   if (pageNumber < 1 || pageNumber > TOTAL_PAGES) {
-    throw new Error(`Invalid page number: ${pageNumber}. Must be between 1 and ${TOTAL_PAGES}`);
+    throw new Error(
+      `Invalid page number: ${pageNumber}. Must be between 1 and ${TOTAL_PAGES}`
+    );
   }
 
   // First page has no number suffix
@@ -235,9 +237,7 @@ export function getCategoryForPage(
  */
 export function isValidPageNumber(pageNumber: number): boolean {
   return (
-    Number.isInteger(pageNumber) &&
-    pageNumber >= 1 &&
-    pageNumber <= TOTAL_PAGES
+    Number.isInteger(pageNumber) && pageNumber >= 1 && pageNumber <= TOTAL_PAGES
   );
 }
 

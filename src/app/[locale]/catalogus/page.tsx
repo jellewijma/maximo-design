@@ -24,7 +24,7 @@ import { CatalogPageClient } from "./CatalogPageClient";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "catalog" });
@@ -42,7 +42,7 @@ export async function generateMetadata({
  * Props for the catalog page
  */
 interface CatalogPageProps {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 /**

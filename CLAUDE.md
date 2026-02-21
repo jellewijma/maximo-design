@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Maximo Design is a B2B bathroom faucets catalog website built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and next-intl for internationalization (Dutch and English).
+Maximo Design is a B2B bathroom faucets catalog website built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and next-intl for internationalization (Dutch and English).
 
 The site features:
 
@@ -49,14 +49,14 @@ The app uses `next-intl` for internationalization with Dutch (nl) as the default
 
 - `src/lib/i18n/config.ts` - Locale definitions and configuration
 - `src/lib/i18n/request.ts` - next-intl request configuration (loaded by Next.js plugin)
-- `src/middleware.ts` - Middleware for locale detection and routing
+- `src/proxy.ts` - Middleware/Proxy for locale detection and routing
 - `messages/nl.json` and `messages/en.json` - Translation files
 
 **Important:**
 
 - All routes are prefixed with locale (e.g., `/nl/catalogus`, `/en/catalog`)
 - Locale is handled via the `[locale]` dynamic route segment in `src/app/[locale]/`
-- The middleware automatically redirects users to locale-prefixed URLs
+- The proxy automatically redirects users to locale-prefixed URLs
 - Use `useTranslations()` hook in client components and `getTranslations()` in server components
 
 ### App Router Structure
@@ -162,7 +162,7 @@ Example: `import { Header } from "@/components/layout"`
 
 ### Server vs Client Components
 
-- Most components are Server Components by default (Next.js 14 App Router)
+- Most components are Server Components by default (Next.js 16 App Router)
 - Components requiring interactivity use `"use client"` directive
 - Client components: CatalogViewer, CatalogPageClient, LanguageSwitcher, Button
 - Keep client boundaries minimal for better performance

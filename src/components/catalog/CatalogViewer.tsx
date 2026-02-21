@@ -23,7 +23,11 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { getPageImagePath, getPageSpread, TOTAL_PAGES } from "@/lib/catalog-data";
+import {
+  getPageImagePath,
+  getPageSpread,
+  TOTAL_PAGES,
+} from "@/lib/catalog-data";
 
 /**
  * Props for the CatalogViewer component
@@ -119,7 +123,7 @@ export function CatalogViewer({
         {/* Two-page spread on desktop, single page on mobile */}
         <div className="relative">
           {/* Mobile/Tablet: Single page view */}
-          <div className="desktop:hidden relative aspect-[3/4] max-h-[calc(100vh-16rem)]">
+          <div className="desktop:hidden relative aspect-3/4 max-h-[calc(100vh-16rem)]">
             <Image
               src={getPageImagePath(currentPage)}
               alt={`Catalog page ${currentPage}`}
@@ -139,7 +143,7 @@ export function CatalogViewer({
           <div className="hidden desktop:flex">
             {/* Left page */}
             {spread.left && (
-              <div className="relative flex-1 aspect-[3/4] max-h-[calc(100vh-16rem)] border-r border-foreground/10">
+              <div className="relative flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] border-r border-foreground/10">
                 <Image
                   src={getPageImagePath(spread.left)}
                   alt={`Catalog page ${spread.left}`}
@@ -157,12 +161,12 @@ export function CatalogViewer({
             )}
             {/* Empty left page for page 1 */}
             {!spread.left && (
-              <div className="flex-1 aspect-[3/4] max-h-[calc(100vh-16rem)] bg-background/50" />
+              <div className="flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] bg-background/50" />
             )}
 
             {/* Right page */}
             {spread.right && (
-              <div className="relative flex-1 aspect-[3/4] max-h-[calc(100vh-16rem)]">
+              <div className="relative flex-1 aspect-3/4 max-h-[calc(100vh-16rem)]">
                 <Image
                   src={getPageImagePath(spread.right)}
                   alt={`Catalog page ${spread.right}`}
@@ -180,7 +184,7 @@ export function CatalogViewer({
             )}
             {/* Empty right page for last page if odd */}
             {!spread.right && (
-              <div className="flex-1 aspect-[3/4] max-h-[calc(100vh-16rem)] bg-background/50" />
+              <div className="flex-1 aspect-3/4 max-h-[calc(100vh-16rem)] bg-background/50" />
             )}
           </div>
         </div>
